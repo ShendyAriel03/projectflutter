@@ -1,8 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import 'app/routes/app_pages.dart';
 import 'app/widgets/splash.dart';
+import 'app/modules/pay/pay.dart';
+import 'app/modules/profil/profil.dart';
+import 'app/pulsa/detailpulsa.dart';
+import 'app/pulsa/isipulsa.dart';
+import 'app/modules/inbox/inbox_view.dart';
+import 'app/modules/login/views/login_view.dart';
+import 'app/modules/topup/topup.dart';
+
+
 
 void main() {
   runApp(MyApp());
@@ -14,7 +22,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: "Application",
-      initialRoute: Routes.HOME,
+      initialRoute: Routes.LOGIN,
       getPages: AppPages.routes,
     );
     return FutureBuilder(
@@ -26,7 +34,7 @@ class MyApp extends StatelessWidget {
           return GetMaterialApp(
             debugShowCheckedModeBanner: false,
             title: "Application",
-            initialRoute: Routes.LOGIN,
+            initialRoute: Routes.HOME,
             getPages: AppPages.routes,
           );
         }

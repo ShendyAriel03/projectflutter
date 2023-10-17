@@ -3,6 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../controllers/home_controller.dart';
+import 'package:mytsel/app/modules/pay/pay.dart';
+import 'package:mytsel/app/modules/profil/profil.dart';
+import 'package:mytsel/app/pulsa/detailpulsa.dart';
+import 'package:mytsel/app/pulsa/isipulsa.dart';
+import 'package:mytsel/app/modules/inbox/inbox_view.dart';
+import 'package:mytsel/app/modules/topup/topup.dart';
+
+
 
 class HomeView extends GetView<HomeController> {
   @override
@@ -102,32 +110,63 @@ class HomeView extends GetView<HomeController> {
                               ),
                             ),
                             SizedBox(height: 10),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  "Rp34.000",
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 26,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                                ElevatedButton(
-                                  onPressed: () {},
-                                  child: Text(
-                                    "Isi Pulsa",
-                                    style: TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 20,
-                                    ),
-                                  ),
-                                  style: ElevatedButton.styleFrom(
-                                    primary: Color(0xFFF7B731),
-                                  ),
-                                ),
-                              ],
-                            ),
+                            // ...
+Row(
+  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+  children: [
+    Text(
+      "Rp34.000",
+      style: TextStyle(
+        color: Colors.white,
+        fontSize: 26,
+        fontWeight: FontWeight.bold,
+      ),
+    ),
+    Row(
+      children: [
+        ElevatedButton(
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => TopupPage()),
+            );
+          },
+          child: Text(
+            "Topup Saldo",
+            style: TextStyle(
+              color: Colors.black,
+              fontSize: 20,
+            ),
+          ),
+          style: ElevatedButton.styleFrom(
+            primary: Color(0xFF4CAF50), // Ganti warna sesuai kebutuhan Anda
+          ),
+        ),
+        SizedBox(width: 10),
+        ElevatedButton(
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => TransactionPage()),
+            );
+          },
+          child: Text(
+            "Isi Pulsa",
+            style: TextStyle(
+              color: Colors.black,
+              fontSize: 20,
+            ),
+          ),
+          style: ElevatedButton.styleFrom(
+            primary: Color(0xFFF7B731),
+          ),
+        ),
+      ],
+    ),
+  ],
+),
+// ...
+
                             SizedBox(height: 10),
                             Divider(
                               color: Colors.black,
@@ -195,10 +234,18 @@ class HomeView extends GetView<HomeController> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          StatusCard(
+                          InkWell(
+                                onTap: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(builder: (context) => KuotaDetailPage() )
+                                    );
+                                  },
+                          child: StatusCard(
                             title: "Internet",
                             data: "12.19",
                             satuan: "GB",
+                          ),
                           ),
                           StatusCard(
                             title: "Telepon",
@@ -216,10 +263,10 @@ class HomeView extends GetView<HomeController> {
                     SizedBox(height: 15),
                   ],
                 ),
-                Container(
-                  height: 7,
-                  color: Colors.grey[300],
-                ),
+                // Container(
+                //   height: 7,
+                //   color: Colors.grey[300],
+                // ),
                 Expanded(
                   child: Container(
                     // color: Colors.purple,
@@ -332,7 +379,7 @@ class HomeView extends GetView<HomeController> {
                         // Navigation
                         Container(
                           margin: EdgeInsets.only(bottom: 20),
-                          height: 100,
+                          height: 75,
                           decoration: BoxDecoration(
                             border: Border(
                               top: BorderSide(
@@ -344,31 +391,55 @@ class HomeView extends GetView<HomeController> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
-                              ItemNav(
+                              InkWell(
+                                onTap: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(builder: (context) => HomeView() )
+                                    );
+                                  },
+                              child: ItemNav(
                                 icon: "beranda",
                                 status: true,
-                                title: "Beran",
+                                title: "Beranda",
+                                 ),
                               ),
-                              ItemNav(
-                                icon: "riwayat",
-                                status: true,
-                                title: "Riwayat",
-                              ),
-                              ItemNav(
-                                icon: "bantuan",
-                                status: true,
-                                title: "Bantuan",
-                              ),
-                              ItemNav(
+                              // ItemNav(
+                              //   icon: "riwayat",
+                              //   status: true,
+                              //   title: "Riwayat",
+                              // ),
+                              // ItemNav(
+                              //   icon: "bantuan",
+                              //   status: true,
+                              //   title: "Bantuan",
+                              // ),
+                              InkWell(
+                                onTap: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(builder: (context) => MyApp() )
+                                    );
+                                  },
+                              child: ItemNav(
                                 icon: "inbox",
                                 status: true,
                                 title: "Inbox",
                               ),
-                              ItemNav(
+                              ),
+                              InkWell(
+                               onTap: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(builder: (context) => ProfilePage() )
+                                    );
+                                  },
+                              child: ItemNav(
                                 icon: "profile",
                                 status: true,
                                 title: "Akun Saya",
                               ),
+                             ),
                             ],
                           ),
                         ),
@@ -475,7 +546,7 @@ class ItemNav extends StatelessWidget {
         ),
         SizedBox(height: 5),
         Text(
-          "Beranda",
+          title,
           style: TextStyle(
             color: (status == true) ? Color(0xFFEC2028) : Color(0xFF747D8C),
           ),
