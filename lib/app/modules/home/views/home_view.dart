@@ -378,8 +378,8 @@ Row(
                         ),
                         // Navigation
                         Container(
-                          margin: EdgeInsets.only(bottom: 20),
-                          height: 75,
+                          margin: EdgeInsets.only(bottom: 5),
+                          height: 55,
                           decoration: BoxDecoration(
                             border: Border(
                               top: BorderSide(
